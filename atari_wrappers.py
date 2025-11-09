@@ -99,7 +99,7 @@ class FrameStack(gym.Wrapper):
         return self.frames, reward, done, truncated, info
 
 def make_atari(env_id):
-    env = gym.make(env_id)
+    env = gym.make(env_id, render_mode="rgb_array")
     env = NoopResetEnv(env)
     env = MaxAndSkipEnv(env)
     env = WarpFrame(env)
