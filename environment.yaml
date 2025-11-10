@@ -85,9 +85,9 @@ dependencies:
       - shimmy==0.2.1
       - six==1.17.0
       - sympy==1.14.0
-      - torch==2.3.0+cu121
-      - torchaudio==2.3.0+cu121
-      - torchvision==0.18.0+cu121
+      - torch==2.3.0
+      - torchaudio==2.3.0
+      - torchvision==0.18.0
       - tqdm==4.67.1
       - triton==2.3.0
       - typing-extensions==4.15.0

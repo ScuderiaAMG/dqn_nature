@@ -21,7 +21,7 @@ def main():
     print("Observation shape:", obs.shape)
 #    agent = DQNAgent(env, device)
     agent = DQNAgent(env, device)
-    replay_buffer = ReplayBuffer(1_000_000)
+    replay_buffer = ReplayBuffer(50_000_000)
     
     total_frames = 50_000_000
     frames = 0
@@ -61,8 +61,8 @@ def main():
         env.close()
         # 保存模型
         os.makedirs("models", exist_ok=True)
-        torch.save(agent.q_net.state_dict(), "models/dqn_breakout_final.pth")
-        print("✅ Model saved to models/dqn_breakout_final.pth")
+        torch.save(agent.q_net.state_dict(), "models/dqn_breakout_final2.pth")
+        print("✅ Model saved to models/dqn_breakout_final2.pth")
 
 if __name__ == "__main__":
     main()
