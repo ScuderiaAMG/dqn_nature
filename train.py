@@ -102,6 +102,9 @@ def main():
     #        反向传播（AMP）
             optimizer.zero_grad()
             scaler.scale(loss).backward()  # 此时 loss 应有 grad_fn
+            # 在 scaler.scale(loss).backward() 之后，scaler.step(optimizer) 之前
+            scaler.unscale_(optimizer)  #  unscaling 梯度以进行裁剪
+            torch.nn.utils.clip_grad_norm_(policy_net.parameters(), max_norm=10.0)  # 梯度裁剪
             scaler.step(optimizer)
             scaler.update()
 
