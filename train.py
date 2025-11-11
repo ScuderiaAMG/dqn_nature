@@ -107,7 +107,12 @@ def main():
 
     # 更新优先级
             memory.update_priorities(indices, td_errors.detach().cpu().numpy())  # 仅这里 detach
+            #loss.backward()
+            optimizer.step()
 
+# 新增：删除临时变量并清理CUDA缓存
+            del states, actions, rewards, next_states, dones, q_values, next_q_values, loss
+            torch.cuda.empty_cache()  # 强制释放未使用的显存
         # 4. 回合结束处理
         if done or truncated:
             rewards.append(episode_reward)
