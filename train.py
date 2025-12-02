@@ -114,7 +114,8 @@ def main():
             optimizer.step()
 
 # 新增：删除临时变量并清理CUDA缓存
-            del states, actions, rewards, next_states, dones, q_values, next_q_values, loss
+            # 删除未定义的q_values和next_q_values，同时注意奖励变量实际名为rewards_batch
+            del states, actions, rewards_batch, next_states, dones, loss
             torch.cuda.empty_cache()  # 强制释放未使用的显存
         # 4. 回合结束处理
         if done or truncated:

@@ -92,6 +92,7 @@ class PrioritizedReplayBuffer:
             prios = self.priorities[:self.pos]
         
         # 计算采样概率（优先级^alpha）
+        prios = prios + 1e-10  
         probs = prios ** self.alpha
         probs /= probs.sum()
 
@@ -117,6 +118,7 @@ class PrioritizedReplayBuffer:
 
     def update_priorities(self, indices, td_errors):
         """用TD误差更新优先级（避免优先级为0）"""
+        td_errors = np.nan_to_num(td_errors, nan=1e-6, posinf=10.0, neginf=10.0)
         for idx, error in zip(indices, td_errors):
             self.priorities[idx] = abs(error.item()) + 1e-6  # 加小值防止概率为0
 
