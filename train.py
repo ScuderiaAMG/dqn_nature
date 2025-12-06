@@ -9,7 +9,7 @@ from atari_wrappers import make_atari
 from model import DQN, huber_loss
 from prioritized_replay_buffer import PrioritizedReplayBuffer
 
-# 超参数配置（适配高性能GPU）
+# 超参数配置
 BATCH_SIZE = 64  # 批量大小，利用显存优势
 GAMMA = 0.99  # 奖励折扣因子
 LEARNING_RATE = 1e-4  # 优化器学习率
