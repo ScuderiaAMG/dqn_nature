@@ -1,3 +1,4 @@
-chi tai yan used it?
+# 基于深度Q网络（DQN）的Atari游戏智能体的设计与实现 源仓库
+感谢华中科技大学AIRHUST团队提供的高性能计算服务器和充足的服务器时间，部署于AIRHUST2服务器训练。
 
-ON NV 4090
+RTX ON
